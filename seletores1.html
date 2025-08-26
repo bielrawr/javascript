@@ -85,6 +85,15 @@
       const listaTarefas = document.getElementById("listaTarefas");
       listaTarefas.innerHTML = "";
 
+      // ---> INÍCIO DA ALTERAÇÃO <---
+      // Se o array de tarefas estiver vazio, exibe a mensagem
+      if (tarefas.length === 0) {
+        listaTarefas.innerHTML = "<p>NINGUÉM CURTIU!</p>";
+        return; // Encerra a função aqui
+      }
+      // ---> FIM DA ALTERAÇÃO <---
+
+      // Se não estiver vazio, cria e exibe a lista de tarefas
       tarefas.forEach((tarefa, index) => {
         const divTarefa = document.createElement("div");
         divTarefa.className = `tarefa ${tarefa.status ? "concluida" : "nao-concluida"}`;
@@ -102,6 +111,11 @@
         listaTarefas.appendChild(divTarefa);
       });
     }
+
+    // ---> ADIÇÃO <---
+    // Chama a função uma vez quando a página carrega para mostrar o estado inicial
+    atualizarLista();
+
   </script>
 </body>
 </html>
